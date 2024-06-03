@@ -38,32 +38,6 @@ ser: true,
 // Middleware para analizar el cuerpo de las solicitudes usando express.urlencoded
 app.use(express.urlencoded({ extended: true }));
 
-// Middleware para servir archivos estáticos desde el directorio 'public'
-app.use(express.static(path.join(__dirname, 'public')));
-
-// Rutas para servir páginas HTML desde el directorio 'views'
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'views', 'index.html'));
-});
-
-app.get('/cart', (req, res) => {
-  res.sendFile(path.join(__dirname, 'views', 'cart.html'));
-});
-
-app.get('/formulario', (req, res) => {
-  res.sendFile(path.join(__dirname, 'views', 'formulario.html'));
-});
-
-app.get('/confirm', (req, res) => {
-  res.sendFile(path.join(__dirname, 'views', 'confirm.html'));
-});
-
-// Ruta para productos específicos
-app.get('/productos/:nombreProducto', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'productos', `${req.params.nombreProducto}.html`));
-});
-
-
 
 // Ruta para manejar la solicitud del formulario y guardar datos en MongoDB
 app.post('/guardar-palabra', async (req, res) => {
