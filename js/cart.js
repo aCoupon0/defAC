@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (cart.length > 0) {
             // Guarda el total del precio en localStorage
             localStorage.setItem('totalPrice', totalPriceElement.textContent);
-            window.location.href = '/formulario'; // Redirecciona a la página de formulario
+            window.location.href = '/formulario.html'; // Redirecciona a la página de formulario
         } else {
             alert('Por favor, añade al menos un producto antes de continuar.');
         }
