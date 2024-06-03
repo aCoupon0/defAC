@@ -29,12 +29,6 @@ mongoose.connect(uri, {
 .then(() => console.log('Conectado a MongoDB'))
 .catch(err => console.error('Error al conectar a MongoDB', err));
 
-ser: true,
-  useUnifiedTopology: true
-})
-.then(() => console.log('Conectado a MongoDB'))
-.catch(err => console.error('Error al conectar a MongoDB', err));
-
 // Middleware para analizar el cuerpo de las solicitudes usando express.urlencoded
 app.use(express.urlencoded({ extended: true }));
 
