@@ -29,14 +29,19 @@ mongoose.connect(uri, {
 .then(() => console.log('Conectado a MongoDB'))
 .catch(err => console.error('Error al conectar a MongoDB', err));
 
+ser: true,
+  useUnifiedTopology: true
+})
+.then(() => console.log('Conectado a MongoDB'))
+.catch(err => console.error('Error al conectar a MongoDB', err));
+
 // Middleware para analizar el cuerpo de las solicitudes usando express.urlencoded
 app.use(express.urlencoded({ extended: true }));
-app.use('/data', express.static(path.join(__dirname, 'public/data')));
 
 // Middleware para servir archivos estáticos desde el directorio 'public'
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Rutas para servir páginas HTML
+// Rutas para servir páginas HTML desde el directorio 'views'
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'views', 'index.html'));
 });
@@ -53,9 +58,11 @@ app.get('/confirm', (req, res) => {
   res.sendFile(path.join(__dirname, 'views', 'confirm.html'));
 });
 
-app.get('/clavel', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'productos', 'clavel.html'));
+// Ruta para productos específicos
+app.get('/productos/:nombreProducto', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'productos', `${req.params.nombreProducto}.html`));
 });
+
 
 
 // Ruta para manejar la solicitud del formulario y guardar datos en MongoDB
