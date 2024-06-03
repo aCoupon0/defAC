@@ -31,8 +31,7 @@ mongoose.connect(uri, {
 
 // Middleware para analizar el cuerpo de las solicitudes usando express.urlencoded
 app.use(express.urlencoded({ extended: true }));
-
-app.use('/data', express.static('public/data'));
+app.use('/data', express.static(path.join(__dirname, 'public/data')));
 
 // Middleware para servir archivos estáticos desde el directorio 'public'
 app.use(express.static(path.join(__dirname, 'public')));
@@ -57,6 +56,7 @@ app.get('/confirm', (req, res) => {
 app.get('/clavel', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'productos', 'clavel.html'));
 });
+
 
 // Ruta para manejar la solicitud del formulario y guardar datos en MongoDB
 app.post('/guardar-palabra', async (req, res) => {
