@@ -229,7 +229,7 @@
                     let cart = JSON.parse(localStorage.getItem('cart')) || [];
                     cart.push(newProduct);
                     localStorage.setItem('cart', JSON.stringify(cart));
-                    window.location.href = '/cart'; // Asegúrate de que esta ruta sea accesible según tu configuración del servidor
+                    window.location.href = '/cart.html'; // Asegúrate de que esta ruta sea accesible según tu configuración del servidor
                 });
             });
         </script>
